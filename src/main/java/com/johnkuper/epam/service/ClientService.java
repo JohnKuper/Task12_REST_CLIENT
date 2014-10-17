@@ -151,9 +151,30 @@ public class ClientService {
 				.queryParam("min", min).queryParam("max", max)
 				.accept("application/json").get(ClientResponse.class);
 
-		List<StoreWeb> stores = parser.getMultiData(response, "store",
+		List<StoreWeb> stores = parser.getMultiData(response, "stores",
 				StoreWeb.class);
 		return stores;
+	}
+
+	public List<StoreWeb> getAllCarsFromStore() {
+
+		logger.debug(calledMethod("getAllCarsFromStore"));
+		ClientResponse response = webResource.path("store/all")
+				.accept("application/json").get(ClientResponse.class);
+		List<StoreWeb> stores = parser.getMultiData(response, "stores",
+				StoreWeb.class);
+		return stores;
+	}
+
+	// sale request
+
+	public void buyCar() {
+
+		logger.debug(calledMethod("buyCar"));
+		String jsonInput = "{\"carID\":1,\"customerID\":1,\"merchantID\":1}";
+		String path = "sales/buyCar";
+		createOrUpdate(jsonInput, path);
+
 	}
 
 }

@@ -23,9 +23,9 @@ public class StoreWeb {
 
 	@Override
 	public String toString() {
-		return "StoreWeb: {id = " + id + "; amount = " + amount
+		return String.format("StoreWeb: {id = " + id + "; amount = " + amount
 				+ "; carPrice = " + carPrice + "; testDrive = " + testDrive
-				+ "%n" + car + "%n";
+				+ "%n" + car + "%n");
 	}
 
 	public int getId() {
